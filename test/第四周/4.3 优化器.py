@@ -35,7 +35,8 @@ init = tf.global_variables_initializer()
 # axis = 0 的时候返回每一列最大值的位置索引
 # axis = 1 的时候返回每一行最大值的位置索引，argmax返回一维向量最大值所在的位置
 correct_prediction = tf.equal(tf.argmax(y,1),tf.argmax(prediction,1))
-#求准确率,转换类型 bool --> float32, 再求准确率
+#correct_prediction返回值为[True, False, True, True]
+#求准确率,转换类型 bool --> float32(小数),tf.reduce_mean取平均值==> 准确率
 accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))
 
 with tf.Session() as sess:
